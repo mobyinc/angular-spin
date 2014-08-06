@@ -1,11 +1,8 @@
-# angular-spinner
+# angular-spin
 
 Angular directive to show an animated spinner (using [spin.js](http://fgnass.github.io/spin.js/))
 
-Copyright (C) 2013, 2014, Uri Shaked <uri@urish.org>.
-
-[![Build Status](https://travis-ci.org/urish/angular-spinner.png?branch=master)](https://travis-ci.org/urish/angular-spinner)
-[![Coverage Status](https://coveralls.io/repos/urish/angular-spinner/badge.png)](https://coveralls.io/r/urish/angular-spinner)
+Originally created by Uri Shaked <uri@urish.org>.
 
 ## Usage
 
@@ -16,40 +13,40 @@ Include both spin.js and angular-spinner.js in your application.
 <script src="bower_components/angular-spinner/angular-spinner.js"></script>
 ```
 
-Add the module `angularSpinner` as a dependency to your app module:
+Add the module `angularSpin` as a dependency to your app module:
 
 ```js
-var myapp = angular.module('myapp', ['angularSpinner']);
+var myapp = angular.module('myapp', ['angularSpin']);
 ```
 
-You can now start using the us-spinner directive to display an animated
+You can now start using the spinner directive to display an animated
 spinner. For example :
 
 ```html
-<span us-spinner></span>
+<span spinner></span>
 ```
 
 You can also pass spinner options, for example:
 
 ```html
-<span us-spinner="{radius:30, width:8, length: 16}"></span>
+<span spinner="{radius:30, width:8, length: 16}"></span>
 ```
 
 Possible configuration options are described in the [spin.js homepage](http://fgnass.github.io/spin.js/).
 
-### Using the usSpinnerService to control spinners
+### Using the spinnerService to control spinners
 
 ```html
 <button ng-click="spin-me">Start spinner</button>
 <button ng-click="spin-me">Stop spinner</button>
 
-<span us-spinner spinner-key="spinner-1"></span>
+<span spinner spinner-group="spinner-1"></span>
 ```
 
-The `usSpinnerService` service let you control spin start and stop :
+The `spinnerService` service let you control spin start and stop :
 
 ```js
-app.controller('MyController', ['$scope', 'usSpinnerService', function($scope, usSpinnerService){
+app.controller('MyController', ['$scope', 'spinnerService', function($scope, spinnerService){
     $scope.startSpin = function(){
         usSpinnerService.spin('spinner-1');
     }
@@ -62,19 +59,19 @@ app.controller('MyController', ['$scope', 'usSpinnerService', function($scope, u
 Note that when you specify a key, the spinner is rendered inactive.
 You can still render the spinner as active with the spinner-start-active parameter :
 ```html
-<span us-spinner spinner-key="spinner-1" spinner-start-active="1"></span>
+<span spinner spinner-key="spinner-1" spinner-start-active="1"></span>
 ```
 
 The spinner-key will be used as an identifier (not unique) allowing you to have several spinners controlled by the same key :
 
 ```html
-<span us-spinner spinner-key="spinner-1"></span>
-<span us-spinner spinner-key="spinner-2"></span>
+<span spinner spinner-key="spinner-1"></span>
+<span spinner spinner-key="spinner-2"></span>
 
 ... random html code ...
 
 <!-- This spinner will be triggered along with the first "spinner-1" -->
-<span us-spinner spinner-key="spinner-1"></span>
+<span spinner spinner-key="spinner-1"></span>
 ```
 
 ## License

@@ -1,5 +1,5 @@
 /**
- * angular-spinner version 0.5.0
+ * angular-spin version 0.5.0
  * License: MIT.
  * Copyright (C) 2013, 2014, Uri Shaked and contributors.
  */
@@ -10,23 +10,23 @@
 	function factory(angular, Spinner) {
 
 		angular
-			.module('angularSpinner', [])
+			.module('angularSpin', [])
 
-			.factory('usSpinnerService', ['$rootScope', function ($rootScope) {
+			.factory('spinnerService', ['$rootScope', function ($rootScope) {
 				var config = {};
 
 				config.spin = function (key) {
-					$rootScope.$broadcast('us-spinner:spin', key);
+					$rootScope.$broadcast('spinner:spin', key);
 				};
 
 				config.stop = function (key) {
-					$rootScope.$broadcast('us-spinner:stop', key);
+					$rootScope.$broadcast('spinner:stop', key);
 				};
 
 				return config;
 			}])
 
-			.directive('usSpinner', ['$window', function ($window) {
+			.directive('spinner', ['$window', function ($window) {
 				return {
 					scope: true,
 					link: function (scope, element, attr) {
@@ -61,13 +61,13 @@
 							}
 						}, true);
 
-						scope.$on('us-spinner:spin', function (event, key) {
+						scope.$on('spinner:spin', function (event, key) {
 							if (key === scope.key) {
 								scope.spin();
 							}
 						});
 
-						scope.$on('us-spinner:stop', function (event, key) {
+						scope.$on('spinner:stop', function (event, key) {
 							if (key === scope.key) {
 								scope.stop();
 							}
